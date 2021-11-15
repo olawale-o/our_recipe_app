@@ -1,0 +1,13 @@
+<% recipes.each do |recipe| %>
+  <div class="row border p-4 my-4">
+    <div class="col-sm-6">
+        <%= link_to recipe_path(recipe.id) do %>
+         <h6 class="mb-4"><%= recipe.name %></h6>
+        <% end %>
+      <%= button_to "Remove", recipe_path(recipe.id), method: :delete, class: "btn btn-danger" %>
+    </div>
+    <div class="col-sm-6">
+      <%= recipe.description %>
+    </div>
+  </div>
+<% end %>
