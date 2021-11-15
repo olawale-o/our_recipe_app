@@ -1,0 +1,20 @@
+<div class="col-md-6 offset-md-3">
+  <% if can_view_inventory?(@inventory) %>
+    <h2 class="text-center mb-4"><%= @inventory.name.capitalize %></h2>
+    <div class="d-flex justify-content-end mb-3">
+      <%= link_to "Add food", new_inventory_inventory_food_path(@inventory.id), class: "btn btn-primary" %>
+    </div>
+    <hr/>
+
+    <% if @inventory_foods.empty? %>
+      <p class="text-center">No foods in this inventory</p>
+    <% else %>
+      <%= render "inventory_table_card", inventory_foods: @inventory_foods %>
+    <% end %>
+
+  <% else %>
+    <div class="alert alert-info">
+      <p class="text-center">You are not authorized to view this recipe</p>
+    </div>
+  <% end %>
+</div>

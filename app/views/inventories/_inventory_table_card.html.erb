@@ -1,0 +1,22 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% inventory_foods.each do |inventory| %>
+      <tr>
+        <td><%= inventory.food.name %></td>
+        <td><%= inventory.quantity %></td>
+        <% if can? :destroy, inventory.food %>
+          <td>
+            <%= link_to 'Remove', inventory_food_path(inventory), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
