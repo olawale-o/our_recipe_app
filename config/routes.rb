@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     resources :recipe_foods, only: [:new]
   end
 
+  resources :inventories, only: [:index, :show, :new, :destroy, :create] do
+    resources :inventory_foods, only: [:new]
+  end
+
+  resources :inventory_foods, only: [:create, :destroy]
+
   resources :recipe_foods, only: [:create, :destroy, :edit, :update]
 
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
