@@ -1,0 +1,11 @@
+<div class="col-md-8 offset-md-2">
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to "Add Inventory", new_inventory_path , class:"btn btn-primary", id: "add-inventory" %>
+  </div>
+  <% if @inventories.empty? %>
+    <div class="alert alert-info">
+      <p>You have no inventories for now</p>
+    </div>
+  <% end %>
+  <%= render partial: 'inventory_card', locals: { inventories: @inventories } %>
+</div>

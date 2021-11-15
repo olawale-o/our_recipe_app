@@ -1,0 +1,28 @@
+<div class="col-md-6 offset-md-3">
+  <% if current_user.foods.any? %>
+    <%= form_with model: @inventory_food, url: inventory_foods_path do |f| %>
+      <%= render 'shared/error', resource: @inventory_food %>
+      <div class="my-2">
+        <%= f.label :food, class: "form-label" %>
+        <%= f.select :food_id, @foods, {}, { class: "form-select" } %>
+      </div>
+      <div class="my-2">
+        <%= f.label :quantity, class: "form-label" %>
+        <%= f.text_field :quantity, { class: "form-control", required: true, placeholder: "1grams" } %>
+      </div>
+      <div class="my-2">
+        <%= f.hidden_field(:inventory_id) %>
+      </div>
+      <div class="text-center my-2">
+        <%= f.submit "Add Food", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="alert alert-info">
+      <p>You have no foods to add inventory to.</p>
+      <p>
+        <%= link_to "Add Food", new_food_path %>
+      </p>
+    </div>
+  <% end %>
+</div>
