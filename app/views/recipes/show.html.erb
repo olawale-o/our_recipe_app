@@ -1,0 +1,42 @@
+<div class="col-md-6 offset-md-3">
+    <h2 class="text-center mb-4"><%= @recipe.name.capitalize %></h2>
+    <div class="row mb-4">
+      <div class="col-8">
+        <p>Preparation time: <%= pluralize(@recipe.preparation_time, 'hour') %></p>
+        <p>Cooking time: <%= pluralize(@recipe.cooking_time, 'hour') %></p>
+        <p>
+          <a href="#">Steps go here...</a>
+        </p>
+      </div>
+      <div class="col-4 d-flex justify-content-end">
+        <div class="form-switch">
+          <label class="form-check-label" for="flexSwitchCheckDefault">Public</label>
+          <%= check_box_tag 'public', @recipe.public, @recipe.public, disabled: true, class: "form-check-input", id: "flexSwitchCheckDefault" %>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="d-flex justify-content-between mb-4">
+        <button type="button" class="btn btn-primary">Generate shopping list</button>
+        <% if user_signed_in? %>
+          <% if can_add_recipe_to_food?(@recipe) %>
+            <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: "btn btn-primary" %>
+          <% else %>
+            <%= button_to "Add Ingredient", {}, class: "btn btn-primary", disabled: true %>
+          <% end %>
+        <% else %>
+          <%= link_to "Log In to add recipe to food", new_user_session_path, class: "btn btn-primary" %>
+       <% end %>
+      </div>
+      <hr>
+    </div>
+    <div class="row">
+      <% if @food_with_recipes.any? %>
+        <%=  render 'recipe_food_table' %>
+      <% else %>
+        <div class="alert alert-info text-center">
+          <p><%= @recipe.name %> is not included in any food</p>
+        </div>
+      <% end %>
+    </div>
+</div>
