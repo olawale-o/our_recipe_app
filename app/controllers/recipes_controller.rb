@@ -27,6 +27,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def public_recipes
+    @public_recipes = Recipe.includes(:user).where(public: true).order(created_at: :desc)
+  end
+
   def destroy
     previous_url = request.env['HTTP_REFERER']
     recipe = Recipe.find(params[:id])
