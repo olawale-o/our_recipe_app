@@ -47,7 +47,7 @@ class RecipeFoodsController < ApplicationController
   def current_user_foods
     @foods = current_user.foods.collect { |food| [food.name, food.id] }
   end
-  
+
   def recipe_food_params
     params.require(:recipe_food).permit(:food_id, :recipe_id, :quantity)
   end
