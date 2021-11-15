@@ -38,7 +38,7 @@ class InventoriesController < ApplicationController
     redirect_to(previous_url)
   end
 
-    private
+  private
 
   def inventory_params
     params.require(:inventory).permit(:name, :description)
