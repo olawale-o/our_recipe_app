@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
   skip_before_action :authenticate_user!, only: [:show]
-  
+
   def index
     @recipes = current_user.recipes.all
   end
