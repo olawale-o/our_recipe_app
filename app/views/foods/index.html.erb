@@ -1,0 +1,22 @@
+<div class="col-md-8 offset-md-2">
+  <% if user_signed_in? %>
+    <div class="d-flex justify-content-end mb-3">
+      <%= link_to "Add food", new_food_path , class:"btn btn-primary", id: "add-food" %>
+    </div>
+    <% if @foods.empty? %>
+      <div class="alert alert-info">
+        <p>Add food to your diary</p>
+      </div>
+    <% else %>
+     <%= render 'food_table', foods: @foods %>
+    <% end %>
+  <% else %>
+    <% if @foods.empty? %>
+      <div class="alert alert-info">
+        <%= link_to "Login to continue", new_user_session_path, class: "btn btn-primary" %> 
+      <% else %>
+        <%= render 'food_table', foods: @foods %>
+      </div>
+    <% end %>
+  <% end %>
+</div
