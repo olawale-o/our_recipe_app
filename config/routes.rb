@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resources :recipe_foods, only: [:create, :destroy, :edit, :update]
 
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
+  get 'general_shopping_list', to: 'general_shopping_lists#index', as: 'general_shopping_list'
 end
