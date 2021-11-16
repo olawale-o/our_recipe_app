@@ -76,4 +76,5 @@ RSpec.configure do |config|
   config.extend Helper::ControllerSpec, type: :request
   config.extend Helper::ControllerSpec, type: :feature
   config.include Helper::AppSpec, type: :feature
+  config.include ActionView::Helpers::TextHelper, type: :feature
 end
