@@ -16,8 +16,7 @@
       </div>
     </div>
     <div class="row mb-4">
-      <div class="d-flex justify-content-between mb-4">
-        <button type="button" class="btn btn-primary">Generate shopping list</button>
+      <div class="d-flex justify-content-end mb-4">
         <% if user_signed_in? %>
           <% if can_add_recipe_to_food?(@recipe) %>
             <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe.id), class: "btn btn-primary" %>
