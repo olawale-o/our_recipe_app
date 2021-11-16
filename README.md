@@ -8,6 +8,9 @@
 - Ruby on Rails
 - PostgresSQL
 - Bootstrap
+
+# Screenshot
+![screenshot](https://github.com/olawale-o/our_recipe_app/blob/tests/app/assets/images/screenshot.png?raw=true")
 ## Getting started
 
 #### Prerequisites
