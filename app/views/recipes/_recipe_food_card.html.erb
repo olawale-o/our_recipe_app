@@ -1,0 +1,20 @@
+<% food_with_recipes.each do |recipe_food| %>
+  <tr>
+    <td><%= recipe_food.food.name %></td>
+    <td><%= pluralize(recipe_food.quantity, recipe_food.food.measurement_unit) %></th>
+    <td>$<%= (recipe_food.food.price * recipe_food.quantity) %></td>
+    <% if can? :destroy, recipe_food.recipe %>
+      <td>
+        <%= link_to "Modify", edit_recipe_food_path(recipe_food), class: "btn btn-primary btn-sm", id: "modify_#{recipe_food.id}" %>
+        <%= link_to "Delete", recipe_food_path(recipe_food), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm", id: "delete_#{recipe_food.id}" %>
+      </td>
+    <% else %>
+      <td>
+        <div class="btn-group">
+          <%= button_to "Modify", {}, class: "btn btn-primary btn-sm", disabled: true %>
+          <%= button_to "Delete", {}, class: "btn btn-danger btn-sm", disabled: true %>
+        </div>
+      </td>
+    <% end %>
+  </tr>
+<% end %> 

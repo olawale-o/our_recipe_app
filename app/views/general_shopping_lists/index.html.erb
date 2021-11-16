@@ -1,0 +1,29 @@
+<div class="col-md-8 offset-md-2">
+   <h2 class="text-center">Shopping List</h2>
+   <div class="row p-4 my-4">
+      <div class="col-sm-6">
+        <p class="mb-4">Amount of food items to buy: <%= @recipe_foods.select('food_id').distinct.count %></p>
+      </div>
+      <div class="col-sm-6">
+        <p>Total value of food needed: $<%= @recipe_foods.sum('quantity * price') %></p>
+      </div>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shopping_list.each do |item| %>
+					<tr>
+						<th><%= item.name %></th>
+						<td><%= pluralize(item.quantity, item.measurement_unit) %></td>
+						<td>$<%= item.price %></td>
+					</tr>
+     		<% end %>
+      </tbody>
+    </table>
+</div>

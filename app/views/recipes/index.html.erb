@@ -1,0 +1,11 @@
+<div class="col-md-8 offset-md-2">
+  <div class="d-flex justify-content-end mb-3">
+    <%= link_to "Add Recipe", new_recipe_path , class:"btn btn-primary", id: "add-recipe" %>
+  </div>
+  <% if @recipes.empty? %>
+    <div class="alert alert-info">
+      <p>You have no recipes for now</p>
+    </div>
+  <% end %>
+  <%= render partial: 'recipe_card', locals: { recipes: @recipes } %>
+</div>

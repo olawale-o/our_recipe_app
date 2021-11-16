@@ -1,0 +1,21 @@
+<div class="col-md-8 offset-md-2">
+  <h2 class="text-center">Public Recipes</h2>
+  <ul>
+    <% @public_recipes.each do |item| %>
+      <%= link_to recipe_path(item.id), class: "public", id: "recipe#{item.id}" do %>
+        <li>    
+          <div class="row border p-4 my-4">
+            <div class="col-sm-6">
+              <h3 class="mb-4"><%= item.name %></h3>
+              <p>By: <%= item.user.name %></p>
+            </div>
+            <div class="col-sm-6">
+              <p>Total food items: <%= item.recipe_foods_count %></p>
+              <p>Total price: $<%= total = item.recipe_foods.includes(:food).sum(:price) %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

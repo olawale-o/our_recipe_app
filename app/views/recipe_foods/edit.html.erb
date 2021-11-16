@@ -1,0 +1,19 @@
+<div class="col-md-6 offset-md-3">
+  <%= form_with model: @recipe_food, url: recipe_food_path do |f| %>
+    <%= render 'shared/error', resource: @recipe_food %>
+    <div class="my-2">
+      <%= f.label :food, class: "form-label" %>
+      <%= f.select :food_id, @foods, {}, { class: "form-select", disabled: true } %>
+    </div>
+    <div class="my-2">
+      <%= f.label :quantity, class: "form-label" %>
+      <%= f.number_field :quantity, { class: "form-control", required: true, placeholder: "1", min: 1 } %>
+    </div>
+    <div class="my-2">
+      <%= f.hidden_field(:recipe_id) %>
+    </div>
+    <div class="text-center my-2">
+      <%= f.submit "Update recipe food", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

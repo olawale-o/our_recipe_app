@@ -1,0 +1,14 @@
+<tr>
+  <td> <%= food.name %></td>
+  <td> <%= food.measurement_unit %></td>
+  <td> $<%= food.price.to_i %></td>
+  <% if can? :destroy, food %>
+    <td>
+      <%= button_to "Delete", food, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" } %>
+    </td>
+  <% else %>
+    <td>
+      <%= button_to "Delete", {}, class: "btn btn-secondary", disabled: true %>
+    </td>
+  <% end %>
+</tr>

@@ -1,0 +1,29 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add a recipe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= form_with model: @recipe, url: recipes_path do |f| %>
+          <div class="my-2">
+            <%= f.text_field :name, { class: "form-control", placeholder: "Recipe 1", required: true } %>
+          </div>
+          <div class="my-2">
+            <%= f.text_field :preparation_time, { class: "form-control", placeholder: "1", required: true } %>
+          </div>
+          <div class="my-2">
+            <%= f.text_field :cooking_time, { class: "form-control", placeholder: "1.5", required: true } %>
+          </div>
+          <div class="my-2">
+            <%= f.text_area :description, { size: "30x5", class: "form-control", placeholder: "Description", required: true } %>
+          </div>
+          <div class="text-center my-2">
+            <%= f.submit "Create recipe", class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
