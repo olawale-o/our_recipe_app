@@ -2,7 +2,7 @@
   <tr>
     <td><%= recipe_food.food.name %></td>
     <td><%= pluralize(recipe_food.quantity, recipe_food.food.measurement_unit) %></th>
-    <td>$<%= recipe_food.food.price %></td>
+    <td>$<%= (recipe_food.food.price * recipe_food.quantity) %></td>
     <% if can? :destroy, recipe_food.recipe %>
       <td>
         <%= link_to "Modify", edit_recipe_food_path(recipe_food), class: "btn btn-primary btn-sm", id: "modify_#{recipe_food.id}" %>
