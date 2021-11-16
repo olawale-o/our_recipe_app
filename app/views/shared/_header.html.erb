@@ -9,11 +9,17 @@
           <li class="nav-item">
             <%= link_to "My Recipes", recipes_path, class: "nav-link" %>
           </li>
+          <li class="nav-item">
+            <%=link_to "General shopping list", general_shopping_list_path, class:"nav-link" %>
+          </li>
         <% end %>
         <li class="nav-item">
           <%= link_to "Public recipes", public_recipes_path, class: "nav-link active", "aria-current": "page" %>
         </li>
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to current_user.name.capitalize, "#", class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to "Log out", destroy_user_session_path, class: "nav-link", method: :delete %>
           </li>
