@@ -9,6 +9,10 @@
 - PostgresSQL
 - Bootstrap
 
+### Live link
+
+[Link](https://evening-earth-39947.herokuapp.com/)
+
 # Screenshot
 ![screenshot](https://github.com/olawale-o/our_recipe_app/blob/tests/app/assets/images/screenshot.png?raw=true")
 ## Getting started
